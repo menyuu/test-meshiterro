@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+  
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_images = @user.post_images.order(updated_at: :desc).page(params[:page])
   end
 
   def edit

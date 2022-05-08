@@ -1,4 +1,5 @@
 class PostImagesController < ApplicationController
+  
   def new
     @post_image = PostImage.new
   end
@@ -15,7 +16,7 @@ class PostImagesController < ApplicationController
 
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.order(updated_at: :desc).page(params[:page])
   end
 
   def show
